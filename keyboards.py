@@ -1,4 +1,9 @@
 import json
+from math import fabs
+
+
+PLACES = ['Место 1', 'Место 2', 'Место 3', 'Место 4', 'Место 5', 'Место 6', 'Место 7', 'Место 8', 'Место 9', 'Место 10', 'Место 11', 'Место 12']
+TOTAL_PLACES = 12
 
 
 def menu_kbd():
@@ -17,7 +22,7 @@ def menu_kbd():
                 "action": {
                     "type": "text",
                     "payload": "{\"button\": \"2\"}",
-                    "label": "Любимые места"
+                    "label": "Коллекция"
                 },
                 "color": "secondary"
             }, ],
@@ -42,19 +47,9 @@ def places_menu_kbd():
         "buttons": [
             [{
                 "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Прислать геопозицию"
-                },
-                "color": "secondary"
-            }, ],
-            [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"2\"}",
-                    "label": "Использовать предыдущую"
-                },
-                "color": "secondary"
+                    "type": "location",
+                    "payload": "{\"button\": \"1\"}"
+                }
             }, ],
             [{
                 "action": {
@@ -71,7 +66,7 @@ def places_menu_kbd():
     return keyboard
 
 
-def sending_geo_kbd():
+def nearby_kbd_old(page):
     keyboard = {
         "one_time": False,
         "buttons": [
@@ -79,12 +74,75 @@ def sending_geo_kbd():
                 "action": {
                     "type": "text",
                     "payload": "{\"button\": \"2\"}",
-                    "label": "Назад"
+                    "label": PLACES[0]
                 },
-                "color": "negative"
-            }, ]
+                "color": "secondary"
+            }, ],
+            [{
+                "action": {
+                    "type": "text",
+                    "payload": "{\"button\": \"2\"}",
+                    "label": PLACES[1]
+                },
+                "color": "secondary"
+            }, ],
+            [{
+                "action": {
+                    "type": "text",
+                    "payload": "{\"button\": \"2\"}",
+                    "label": PLACES[2]
+                },
+                "color": "secondary"
+            }, ],
+            [{
+                "action": {
+                    "type": "text",
+                    "payload": "{\"button\": \"2\"}",
+                    "label": PLACES[3]
+                },
+                "color": "secondary"
+            }, ],
+            [{
+                "action": {
+                    "type": "text",
+                    "payload": "{\"button\": \"2\"}",
+                    "label": PLACES[4]
+                },
+                "color": "secondary"
+            }, ],
+            [{
+                "action": {
+                    "type": "text",
+                    "payload": "{\"button\": \"7\"}",
+                    "label": "<"
+                },
+                "color": "primary"
+            },
+                {
+                    "action": {
+                        "type": "text",
+                        "payload": "{\"button\": \"2\"}",
+                        "label": "Назад"
+                    },
+                    "color": "negative"
+                },
+
+                {
+                    "action": {
+                        "type": "text",
+                        "payload": "{\"button\": \"7\"}",
+                        "label": ">"
+                    },
+                    "color": "primary"
+                }
+            ]
         ]
     }
+    if (page - 1) * 5 + 5 > TOTAL_PLACES:
+        diff = TOTAL_PLACES - (page - 1) * 5 - 5
+        diff = int(fabs(diff))
+        for i in range(diff):
+            del(keyboard['buttons'][-2])
     keyboard = json.dumps(keyboard, ensure_ascii=False).encode('utf-8')
     keyboard = str(keyboard.decode('utf-8'))
     return keyboard
@@ -94,47 +152,7 @@ def nearby_kbd():
     keyboard = {
         "one_time": False,
         "buttons": [
-            [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"2\"}",
-                    "label": "Место 1"
-                },
-                "color": "secondary"
-            }, ],
-            [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"2\"}",
-                    "label": "Место 2"
-                },
-                "color": "secondary"
-            }, ],
-            [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"2\"}",
-                    "label": "Место 3"
-                },
-                "color": "secondary"
-            }, ],
-            [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"2\"}",
-                    "label": "Место 4"
-                },
-                "color": "secondary"
-            }, ],
-            [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"2\"}",
-                    "label": "Место 5"
-                },
-                "color": "secondary"
-            }, ],
-            [{
+                [{
                 "action": {
                     "type": "text",
                     "payload": "{\"button\": \"7\"}",
