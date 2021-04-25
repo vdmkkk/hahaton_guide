@@ -1,3 +1,5 @@
+# файл с клавиатурами кнопок
+
 import json
 from math import fabs
 
@@ -23,14 +25,6 @@ def menu_kbd():
                     "type": "text",
                     "payload": "{\"button\": \"2\"}",
                     "label": "Коллекция"
-                },
-                "color": "secondary"
-            }, ],
-            [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"2\"}",
-                    "label": "Добавить свое место"
                 },
                 "color": "secondary"
             }, ]
