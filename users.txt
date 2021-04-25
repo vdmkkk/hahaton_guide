@@ -1,1 +1,1 @@
-{'111': '111', 346561169: {'act': 'menu', 'fav': [], 'geo': {'latitude': 55.656539, 'longitude': 37.602081}}}
+{'111': '111', 242150639: {'act': 'menu', 'fav': ['14', '4'], 'geo': {'latitude': 55.630344, 'longitude': 37.592105}, 'page': 0}, 201304768: {'act': 'nearby', 'fav': [], 'geo': {'latitude': 63.750252, 'longitude': 145.184269}, 'page': 1}, 2606357: {'act': 'nearby', 'fav': [], 'geo': {'latitude': 55.807806, 'longitude': 37.282799}, 'page': 1}, 346561169: {'act': 'nearby', 'fav': [], 'geo': {'latitude': 55.656539, 'longitude': 37.602081}, 'page': 1}}
